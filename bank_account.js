@@ -6,7 +6,7 @@ export class BankAccount {
   deposit(amount) {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        if (isNaN(amount) || amount <= 0) reject('Invalid amount');
+        if (isNaN(amount) || amount <= 0) return reject('Invalid amount');
 
         this.balance += Number(amount);
         resolve(this.balance);
@@ -16,8 +16,8 @@ export class BankAccount {
   withdraw(amount) {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        if (isNaN(amount) || amount <= 0) reject('Invalid amount');
-        if (amount > this.balance) reject('Saldo kurang');
+        if (isNaN(amount) || amount <= 0) return reject('Invalid amount');
+        if (amount > this.balance) return reject('Saldo kurang');
 
         this.balance -= amount;
         resolve(this.balance);
